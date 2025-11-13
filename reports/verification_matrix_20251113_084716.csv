@@ -1,0 +1,50 @@
+module_name,tier,import_passed,cli_passed,unrestricted_passed,overall_passed,import_message,cli_message,unrestricted_message
+module_registry,tier_0,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+execution_adapter,tier_0,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+network_utils,tier_0,True,False,False,True,Import successful,CLI timeout,"Unrestricted check error: Command '['python', '-m', 'cerberus_agents.network_utils', '--help']' timed out after 10 seconds"
+network_scanner_advanced,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+subdomain_enumeration,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+asset_discovery_agent,tier_1_network,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+nuclei_scanner,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+naabu_port_scanner,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+rustscan_integration,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+httpx_http_probing,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+subfinder_subdomain_discovery,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+feroxbuster_integration,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+ffuf_integration,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+osint_reconnaissance,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+theharvester_integration,tier_1_network,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+active_directory_attacks,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+kerberos_attacks,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+impacket_lateral_movement,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+netexec_lateral_movement,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+certipy_adcs_attacks,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+bloodhound_analyzer,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+rubeus_wrapper,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+kerbrute_integration,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+lsassy_credential_dumping,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+donpapi_secrets_dumping,tier_1_ad,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+aws_exploitation,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+pacu_aws_exploitation,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+cloudfox_aws_integration,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+prowler_cloud_compliance,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+scoutsuite_cloud_audit,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+microburst_integration,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+roadtools_integration,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+graphrunner_integration,tier_1_cloud,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+sliver_c2_framework,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+havoc_c2_integration,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+mythic_c2_framework,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+covenant_c2_integration,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+empire_c2_integration,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+poshc2_framework,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+merlin_c2_integration,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+data_exfiltration,tier_1_c2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+container_kubernetes_security,tier_2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+kube_hunter_pentesting,tier_2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+mobile_app_security,tier_2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+android_pentesting_suite,tier_2,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+ios_pentesting_framework,tier_2,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+web_vuln_scanner,tier_2,True,True,True,True,Import successful,CLI accessible,Module does not require authorization flag
+owasp_zap_scanner,tier_2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)
+sqlmap_exploitation,tier_2,True,True,True,True,Import successful,CLI accessible,Unrestricted mode active (--authorized available)

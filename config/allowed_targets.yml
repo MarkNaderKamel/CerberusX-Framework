@@ -1,0 +1,18 @@
+# Allowed Targets Configuration
+# Define authorized targets for security testing
+# This file must be configured before using the toolkit
+
+allowed_networks:
+  - 192.168.1.0/24    # Example: Internal test network
+  - 10.0.0.0/8        # Example: Private network range
+  
+allowed_domains:
+  - example.com       # Example: Authorized test domain
+  - test.local        # Example: Test domain
+
+allowed_ips:
+  - 127.0.0.1         # Localhost for testing
+  - 192.168.1.100     # Example: Specific test host
+
+# WARNING: Only add targets you have explicit written authorization to test
+# Unauthorized testing is illegal and unethical

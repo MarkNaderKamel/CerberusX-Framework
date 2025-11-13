@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+
+# PyInstaller
+*.spec
+
+# Logs
+*.log
+
+# Local data
+assets.json
+recon_data_*.json
+recon_report_*.html
+credentials_audit.json
+canary_alerts.json
+orchestration_results/
+forensics/
+collected_reports/
+honeytokens/
+
+# Config secrets
+config/collector_api_key.txt
+config/collector_encryption.key
+*.enc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.env

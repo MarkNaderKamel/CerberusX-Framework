@@ -1,0 +1,31 @@
+{
+  "default_mode": "simulator",
+  "require_authorization": true,
+  "rate_limits": {
+    "can_message_injection": {
+      "max_per_second": 10,
+      "burst": 5
+    },
+    "uds_request": {
+      "max_per_second": 5,
+      "burst": 2
+    },
+    "firmware_operation": {
+      "max_per_second": 1,
+      "burst": 1
+    }
+  },
+  "authorized_targets": [
+    "simulator",
+    "test_vehicle",
+    "dev_ecu"
+  ],
+  "emergency_contacts": [
+    "security-team@example.com"
+  ],
+  "simulator_defaults": {
+    "can_bitrate": 500000,
+    "can_fd_enabled": false,
+    "interface": "vcan0"
+  }
+}

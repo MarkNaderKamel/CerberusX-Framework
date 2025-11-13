@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-11-12T10:18:44.485836",
+  "python_packages": {
+    "tested": 29,
+    "passed": 27,
+    "failed": [
+      "numpy",
+      "imagehash"
+    ]
+  },
+  "module_imports": {
+    "tested": 125,
+    "passed": 124,
+    "failed": [
+      "facial_recognition_search"
+    ]
+  },
+  "security_controls": {
+    "tested": 4,
+    "passed": 4,
+    "failed": []
+  },
+  "external_tools": {
+    "tested": 11,
+    "found": 1,
+    "missing": [
+      "nuclei",
+      "rustscan",
+      "ffuf",
+      "feroxbuster",
+      "sqlmap",
+      "hashcat",
+      "john",
+      "metasploit",
+      "bettercap",
+      "aircrack-ng"
+    ]
+  },
+  "config_files": {
+    "tested": 5,
+    "valid": 5,
+    "invalid": []
+  }
+}
