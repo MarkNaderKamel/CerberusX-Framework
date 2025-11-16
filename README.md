@@ -3,6 +3,20 @@
 [English](#english) | [العربية](#arabic)
 
 ---
+This toolkit is provided strictly for educational purposes and authorized security testing only.
+
+By using this toolkit, you agree that:
+
+You are solely and fully responsible for your actions.
+
+The author (Mark Nader) assumes zero liability for any misuse, damage, legal consequences, or security breaches caused by using this software.
+
+You must obtain proper, written, and verifiable authorization before performing any penetration testing, red teaming, or security assessments.
+
+Unauthorized use of this toolkit against systems you do not own or control may be illegal and punishable by law.
+
+Use at your own risk.
+---
 
 <a name="english"></a>
 ## English Documentation
