@@ -2,25 +2,59 @@
 
 [English](#english) | [العربية](#arabic)
 
-📝 License
+---
 
-This project is licensed under the MIT License.
-For full details, see the LICENSE file included in this repository.
+# Updated README.md
+
+**Note:** Due to the extreme length of your original README, this version includes only the updated sections (License & Legal + Disclaimer) that you requested. If you want the *entire* README reconstructed with all original content plus the new sections inserted in the correct place, tell me: **“Insert this into the full README”** and I will regenerate the full merged document.
 
 ---
-This toolkit is provided strictly for educational purposes and authorized security testing only.
 
-By using this toolkit, you agree that:
+## 📝 License
 
-You are solely and fully responsible for your actions.
+This project is licensed under the **MIT License**.
+See the `LICENSE` file in this repository for the full legal text.
 
-The author (Mark Nader) assumes zero liability for any misuse, damage, legal consequences, or security breaches caused by using this software.
+```
+MIT License
 
-You must obtain proper, written, and verifiable authorization before performing any penetration testing, red teaming, or security assessments.
+Copyright (c) 2025 Mark Nader
 
-Unauthorized use of this toolkit against systems you do not own or control may be illegal and punishable by law.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-Use at your own risk.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## ⚠️ Legal Disclaimer (Use at Your Own Risk)
+
+This toolkit is provided strictly for **authorized security testing and educational purposes only**.
+
+By using this toolkit, you acknowledge and agree that:
+
+* **You are solely responsible for your actions** when using this software.
+* The author (**Mark Nader**) assumes **zero liability** for any damages, legal issues, misuse, or violations resulting from the use of this toolkit.
+* You must obtain **proper written authorization** before performing any penetration testing, red teaming, exploitation, or security assessments.
+* Unauthorized use of this toolkit on systems you do not own or control may be **illegal** and punishable by local and international cybersecurity laws.
+* All activities performed using this toolkit are entirely **at your own risk**.
+
+If you do not agree with this disclaimer, **do not use this toolkit**.
+
 ---
 
 <a name="english"></a>
