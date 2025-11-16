@@ -2,6 +2,11 @@
 
 [English](#english) | [العربية](#arabic)
 
+📝 License
+
+This project is licensed under the MIT License.
+For full details, see the LICENSE file included in this repository.
+
 ---
 This toolkit is provided strictly for educational purposes and authorized security testing only.
 
