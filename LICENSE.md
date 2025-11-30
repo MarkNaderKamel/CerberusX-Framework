@@ -1,13 +1,10 @@
-MIT License
+Personal Use Only Copyright (c) 2025 Mark Nader
 
-Copyright (c) 2025 Mark Nader
+Permission is hereby granted, free of charge, to any person obtaining a copy of this Toolkit
+to use the Toolkit for personal use only.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this Toolkit and associated documentation files (CerberusX-Framework), to use,
- The Toolkit for personal.
- **However, selling خق modify, merge, publish, and distribute 
- The Toolkit in any form is strictly prohibited without prior
- written permission from the owner (Mark Nader).**
+ Selling, modifying, merging, publishing, and distributing The Toolkit in any form
+ is strictly prohibited without prior written permission from the owner (Mark Nader).
 
 You are allowed to use this Toolkit freely, but **you may not sell, resell,
 or offer it commercially** unless explicit approval is obtained directly
