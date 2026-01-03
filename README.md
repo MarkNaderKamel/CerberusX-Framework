@@ -2,13 +2,6 @@
 
 [English](#english) | [العربية](#arabic)
 
----
-
-# Updated README.md
-
-**Note:** Due to the extreme length of your original README, this version includes only the updated sections (License & Legal + Disclaimer) that you requested. If you want the *entire* README reconstructed with all original content plus the new sections inserted in the correct place, tell me: **“Insert this into the full README”** and I will regenerate the full merged document.
-
----
 
 ## 📝 License
 
